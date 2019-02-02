@@ -1,0 +1,47 @@
+savoid setup() {
+  // Initial setup code, preparing outputs and inputs
+  pinMode(2, OUTPUT);
+  pinMode(3, OUTPUT);
+  pinMode(4, INPUT);
+  pinMode(5, INPUT);
+}
+
+void loop() {
+  // Code to check inputs, and blink LEDs according to them
+  
+  int button1 = digitalRead(4);
+  int button2 = digitalRead(5);
+  
+  // If both buttons pushed, toggle both LEDs
+  
+  if (button1 == HIGH && button2 == HIGH) {
+    digitalWrite(2, HIGH);
+    delay(100);
+    digitalWrite(2, LOW);
+    digitalWrite(3, HIGH);
+    delay(100);
+    digitalWrite(3, LOW);
+  }
+  
+  // If the left button is pushed, blink the left LED quickly
+  else if (button1 == HIGH) {
+    digitalWrite(2, HIGH);
+    delay(50);
+    digitalWrite(2, LOW);
+    delay(50);
+  }
+  
+  // If the right button is pushed, blink the right LED quickly
+  else if (button2 == HIGH) {
+    digitalWrite(3, HIGH);
+    delay(50);
+     digitalWrite(3, LOW);
+    delay(50);
+  }
+  
+  // Keep outputs off when no buttons are being pushed
+  else {
+    digitalWrite(2, LOW);
+    digitalWrite(3, LOW);
+  }
+}
